@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -120,13 +128,45 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GradeListsController.cs" />
+    <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MySubjectsController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ParentsController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\QuizsController.cs" />
+    <Compile Include="Controllers\SClassesController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201059314_migra1.cs" />
+    <Compile Include="Migrations\201612201059314_migra1.Designer.cs">
+      <DependentUpon>201612201059314_migra1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\GradeList.cs" />
+    <Compile Include="Models\MySubject.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\RegisterContext.cs" />
+    <Compile Include="Models\SClass.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\RegisterDB.mdf" />
+    <Content Include="App_Data\RegisterDB_log.ldf">
+      <DependentUpon>RegisterDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -161,10 +201,66 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Teachers\Create.cshtml" />
+    <Content Include="Views\Teachers\Delete.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Teachers\Edit.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Delete.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\SClasses\Create.cshtml" />
+    <Content Include="Views\SClasses\Delete.cshtml" />
+    <Content Include="Views\SClasses\Details.cshtml" />
+    <Content Include="Views\SClasses\Edit.cshtml" />
+    <Content Include="Views\SClasses\Index.cshtml" />
+    <Content Include="Views\Quizs\Create.cshtml" />
+    <Content Include="Views\Quizs\Delete.cshtml" />
+    <Content Include="Views\Quizs\Details.cshtml" />
+    <Content Include="Views\Quizs\Edit.cshtml" />
+    <Content Include="Views\Quizs\Index.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Parents\Create.cshtml" />
+    <Content Include="Views\Parents\Delete.cshtml" />
+    <Content Include="Views\Parents\Details.cshtml" />
+    <Content Include="Views\Parents\Edit.cshtml" />
+    <Content Include="Views\Parents\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\MySubjects\Create.cshtml" />
+    <Content Include="Views\MySubjects\Delete.cshtml" />
+    <Content Include="Views\MySubjects\Details.cshtml" />
+    <Content Include="Views\MySubjects\Edit.cshtml" />
+    <Content Include="Views\MySubjects\Index.cshtml" />
+    <Content Include="Views\GradeLists\Create.cshtml" />
+    <Content Include="Views\GradeLists\Delete.cshtml" />
+    <Content Include="Views\GradeLists\Details.cshtml" />
+    <Content Include="Views\GradeLists\Edit.cshtml" />
+    <Content Include="Views\GradeLists\Index.cshtml" />
+    <Content Include="Views\Grades\Create.cshtml" />
+    <Content Include="Views\Grades\Delete.cshtml" />
+    <Content Include="Views\Grades\Details.cshtml" />
+    <Content Include="Views\Grades\Edit.cshtml" />
+    <Content Include="Views\Grades\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <EmbeddedResource Include="Migrations\201612201059314_migra1.resx">
+      <DependentUpon>201612201059314_migra1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
