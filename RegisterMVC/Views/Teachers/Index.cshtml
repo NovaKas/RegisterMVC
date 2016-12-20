@@ -4,7 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="~/News/Index">Ogłoszenia</a></li>
+            <li><a href="~/GradeLists">Baza ocen</a></li>
+            <li><a href="~/Parent/Frequency">Frekwencja</a></li>
+            <li><a href="~/Parent/Reprimands">Uwagi</a></li>
+            <li class="active"><a href="~/Parent/Message">Wiadomości<span class="badge">4</span></a></li>
+            <li><a href="~/Parent/Statistics">Statystki</a></li>
+            <li><a href="~/Parent/UserPanel">Panel użytkownika</a></li>
+        </ul>
+    </div>
+</nav>
+<h2>Baza nauczycieli</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
